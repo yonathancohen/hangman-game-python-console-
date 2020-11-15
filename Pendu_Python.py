@@ -6,7 +6,7 @@ afficher_regles_du_jeu()		# affiche les regles du jeu
 nom_utilisateur = entrez_nom()	# on enregistre dans une variable nom_utilisateur la valeur retournee par la fonction qui demande a rentrer le nom
 score[nom_utilisateur] = 0		# on initialise le score de l'utilisateur a zero (on s'embete pas avec les histoire de conserver les scores)
 
-count=0							# ce compteur va nous permettre de jouer trois manches 
+count=0							# ce compteur va nous permettre de jouer trois manches
 i=1								# ce compteur est utilise pour indiquer le numero de la manche qui va etre jouee
 while count < 3:				# boucle qui va permettre de jouer des manches tant qu'on en a fait moins de 3
 	mot_genere = mot_choisi()	# on enregistre dans une variable le mot genere aleatoirement depuis notre liste de mots
@@ -24,7 +24,7 @@ while count < 3:				# boucle qui va permettre de jouer des manches tant qu'on en
 
 		if lettre_choisie == mot_genere:		# si cette lettre n'est en fait pas une lettre mais plutot le mot que l'on veut trouver
 			score[nom_utilisateur] += nombre_tentatives		# on ajoute au score le nombre de tentatives restantes
-			print("\nBravo, vous avez trouve le mot ! Votre score partiel: ", score[nom_utilisateur], "\n")		# et on affiche : ...
+			print("\nGood Job, you found the word !! your temporary score: ", score[nom_utilisateur], "\n")		# et on affiche : ...
 			i+=1		# cette indentation de i permet d'enregistrer que l'on joue la 2e ou 3e manche
 			count += 1	# cette indentation de count permet de jouer encore une manche si on en a pas fait 3. Je suis conscient qu'on aurait pu se passer de i ou de count et utiliser deux fois la meme variable pour les deux fonctionnalites, mais chai pas, pas la force de revenir dans le code pour arranger ca. On aurait gagne 3 ou 4 lignes
 			if count == 3:	# si count = 3 on sort de cette boucle et on ne repetera pas le while qui precede celui dans lequel on se trouve.
@@ -43,8 +43,8 @@ while count < 3:				# boucle qui va permettre de jouer des manches tant qu'on en
 			nombre_tentatives -= 1		# sinon, la lettre est fausse et il perd une chance
 			if nombre_tentatives == 0:	# si il n'a plus de chances on sort de ce while et on n'y re rentre plus car c'est un tnai pour repeter la saisie de lettre que le nombre de chances soit superieur a zero
 				break
-			else: 
-				print("Rate ! Il te reste ", nombre_tentatives, " chances\n")	# sinon on lui indique le nombre de chances qu'il lui reste 
+			else:
+				print("Rate ! Il te reste ", nombre_tentatives, " chances\n")	# sinon on lui indique le nombre de chances qu'il lui reste
 		mot_a_trouver = afficher_premiere_lettre(mot_genere) + " " + recup_mot_masque(mot_genere_sans_premiere_et_derniere_lettre(mot_genere), lettres_justes) + " " + afficher_derniere_lettre(mot_genere)		# on affiche le mot partiel mis a jour
 		if mot_a_trouver.replace(" ", "") == mot_genere:	# si le mot partiel duquel on enleve les espaces est egal au mot genere, on affiche le mot a trouver et on lui donne la valeur du mot genere donc on ne rentrera plus dans le while de la saisie de lettre car le mot a ete trouve
 			print("\n" + mot_a_trouver)
@@ -59,8 +59,8 @@ while count < 3:				# boucle qui va permettre de jouer des manches tant qu'on en
 			break
 		else:
 			print("\n\nC'est parti pour la " + str(i) +"e manche:\n\n")
-		
-	elif nombre_tentatives == 0:	
+
+	elif nombre_tentatives == 0:
 		print("\nPENDU !! Le mot etait " + mot_genere + "\n" + "C'est fini, vous avez perdu. Votre score partiel est: 0 et votre score cumule est:", score[nom_utilisateur])
 		i+=1
 		count += 1
